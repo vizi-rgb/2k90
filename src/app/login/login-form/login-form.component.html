@@ -1,0 +1,18 @@
+<div class="w-screen h-screen flex justify-center items-center z-50">
+    <div class="h-[600px] w-[785px] border z-50">
+        <form class="flex flex-col justify-between items-center w-full h-full z-50">
+            <div class="flex flex-col w-full items-center gap-y-5 mt-16 z-50">
+                <label for="login" class="font-titillium text-3xl text-white">Login</label>
+                <input class="rounded-full w-3/4 h-14 bg-color-2 text-2xl text-white text-center" id="login" name="login" type="text">
+            </div>
+
+            <div class="flex flex-col w-full items-center gap-y-5">
+                <label for="password" class="font-titillium text-3xl text-white">Hasło</label>
+                <input class="rounded-full w-3/4 h-14 bg-color-2 text-2xl text-white text-center" id="password" name="password" type="password">
+            </div>
+
+            <div class="text-gray-50 font-sans text-s">Nie masz konta? <a class="text-green-300 hover:underline hover:cursor-pointer" routerLink="/register">Zarejestruj się</a></div>
+            <button class="font-titillium text-3xl text-white w-full h-24 bg-gradient-to-b from-color-3 to-color-2 transition ease-in-out duration-100 hover:opacity-90">Zaloguj się</button>
+        </form>
+    </div>
+</div>

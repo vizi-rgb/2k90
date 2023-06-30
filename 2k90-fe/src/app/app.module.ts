@@ -10,7 +10,6 @@ import { RegisterComponent } from './register/register/register.component';
 import { IndexComponent } from './index/index/index.component';
 import { CredentialsBackgroundComponent } from './shared/credentials-background/credentials-background.component';
 import { RegisterFormComponent } from './register/register-form/register-form.component';
-import { IndexBackgroundComponent } from './index/index-background/index-background.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { IndexBackgroundComponent } from './index/index-background/index-backgro
     IndexComponent,
     CredentialsBackgroundComponent,
     RegisterFormComponent,
-    IndexBackgroundComponent
   ],
   imports: [
     BrowserModule,

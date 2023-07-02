@@ -14,7 +14,7 @@ interface Quote {
 })
 export class IndexComponent implements OnInit {
 
-  quote: string = "\"I hate being bipolar, it's awesome!\""
+  public quote: string | undefined;
   private apiUrl: string = "https://api.kanye.rest";
 
   constructor(
@@ -34,7 +34,6 @@ export class IndexComponent implements OnInit {
   }
 
   getKanyeSentence(): Observable<Quote> {
-    console.log(this.http.get<Quote>(this.apiUrl));
     return this.http.get<Quote>(this.apiUrl);
   }
 }

@@ -1,23 +1,31 @@
-<div class="w-screen h-screen flex justify-center items-center z-10 absolute top-0 left-0">
+<div class="w-screen h-screen flex flex-col justify-center items-center z-10 absolute top-0 left-0">
+    <div *ngIf="login.invalid && login.dirty && blur.login" class="text-xl text-red-800 font-titillium mb-3">
+        <div *ngIf="login.errors?.['required']">Login jest wymagany.</div>
+        <div *ngIf="login.errors?.['minlength']">Login musi zawierać co najmniej 4 znaki.</div>
+        <div *ngIf="login.errors?.['maxlength']">Login nie może być dłuższy niż 32 znaki.</div>
+    </div>
+
     <div class="h-[500px] w-96 border z-10">
         <form class="flex flex-col justify-between items-center w-full h-full z-10">
+
             <div class="flex flex-col w-full items-center gap-y-1 mt-4 z-10">
                 <label for="login" class="font-titillium text-2xl text-white z-10">Login</label>
-                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="login" name="login" type="text">
+                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="login" name="login" type="text" required minlength="4" maxlength="32" [(ngModel)]="model.login" #login="ngModel" (blur)="blur.login = true" (focus)="blur.login = false">
             </div>
 
             <div class="flex flex-col w-full items-center gap-y-1 z-10">
                 <label for="password" class="font-titillium text-2xl text-white z-10">Hasło</label>
-                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="password" name="password" type="password">
+                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="password" name="password" type="password" required minlength="8" maxlength="96" [(ngModel)]="model.password" #password="ngModel" (blur)="blur.password = true" (focus)="blur.password = false" >
             </div>
 
             <div class="flex flex-col w-full items-center gap-y-1 z-10">
                 <label for="password-confirmation" class="font-titillium text-2xl text-white z-10">Potwierdzenie hasła</label>
-                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="password-confirmation" name="password-confirmation" type="password">
+                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="password-confirmation" name="password-confirmation" type="password" [(ngModel)]="model.passwordConfirmation" #passwordConfirmation="ngModel">
             </div>
 
             <div class="text-gray-50 font-sans text-xs z-10">Masz konto? <a class="text-green-300 hover:underline hover:cursor-pointer z-10" routerLink="/login">Zaloguj się</a></div>
             <button class="font-titillium text-2xl text-white w-full h-24 bg-gradient-to-b from-color-3 to-color-2 transition ease-in-out duration-100 hover:opacity-90 z-10">Zaloguj się</button>
+
         </form>
     </div>
 </div>

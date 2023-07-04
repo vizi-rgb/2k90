@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register-form',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./register-form.component.css']
 })
 export class RegisterFormComponent {
+  public model = {
+    login: null,
+    password: null,
+    passwordConfirmation: null
+  }
 
+  public blur = {
+    login: false,
+    password: false,
+    passwordConfirmation: false
+  }
+
+  public error: boolean = false;
 }

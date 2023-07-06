@@ -1,30 +1,60 @@
 <div class="w-screen h-screen flex flex-col justify-center items-center z-10 absolute top-0 left-0">
-    <div *ngIf="login.invalid && login.dirty && blur.login" class="text-xl text-red-800 font-titillium mb-3">
-        <div *ngIf="login.errors?.['required']">Login jest wymagany.</div>
-        <div *ngIf="login.errors?.['minlength']">Login musi zawierać co najmniej 4 znaki.</div>
-        <div *ngIf="login.errors?.['maxlength']">Login nie może być dłuższy niż 32 znaki.</div>
-    </div>
 
-    <div class="h-[500px] w-96 border z-10">
-        <form class="flex flex-col justify-between items-center w-full h-full z-10">
+
+    <div *ngIf="false" class="text-xl text-red-800 font-titillium mb-3">
+        Hasło i potwierdzienie hasła się różnią.
+    </div>
+    
+
+    <div class="h-4/6 sm:h-[500px] sm:w-96 border z-10 w-72 mx-3">
+        <form class="flex flex-col justify-between items-center w-full h-full z-10" #registerForm="ngForm">
 
             <div class="flex flex-col w-full items-center gap-y-1 mt-4 z-10">
                 <label for="login" class="font-titillium text-2xl text-white z-10">Login</label>
-                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="login" name="login" type="text" required minlength="4" maxlength="32" [(ngModel)]="model.login" #login="ngModel" (blur)="blur.login = true" (focus)="blur.login = false">
+                <input class="lowercase rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="login" name="login" type="text" required minlength="4" maxlength="32" [(ngModel)]="model.login" #login="ngModel" (blur)="blur.login = true" (focus)="blur.login = false">
             </div>
+
+            <ng-container *ngIf="login.invalid && (login.dirty || login.touched)" >
+                <div class="text-sm text-red-800 font-titillium mb-3 text-center mx-4">
+                    <div *ngIf="login.errors?.['required']">Login jest wymagany.</div>
+                    <div *ngIf="login.errors?.['minlength']">Login musi zawierać co najmniej 4 znaki.</div>
+                    <div *ngIf="login.errors?.['maxlength']">Login nie może być dłuższy niż 32 znaki.</div>
+                </div>
+            </ng-container>
 
             <div class="flex flex-col w-full items-center gap-y-1 z-10">
                 <label for="password" class="font-titillium text-2xl text-white z-10">Hasło</label>
-                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="password" name="password" type="password" required minlength="8" maxlength="96" [(ngModel)]="model.password" #password="ngModel" (blur)="blur.password = true" (focus)="blur.password = false" >
+                <input class="rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="password" name="password" type="password" required minlength="8" maxlength="96" appPasswordStrength [(ngModel)]="model.password" #password="ngModel" (blur)="blur.password = true" (focus)="blur.password = false" >
             </div>
+
+            <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div class="text-sm text-red-800 font-titillium mb-3 text-center mx-4">
+                    <ng-container *ngIf="password.errors?.['required'] || 
+                                         password.errors?.['minlength'] ||
+                                         password.errors?.['maxlength']; else regexBlock">
+                        <div *ngIf="password.errors?.['required']">Hasło jest wymagane.</div>
+                        <div *ngIf="password.errors?.['minlength']">Hasło musi zawierać co najmniej 8 znaków.</div>
+                        <div *ngIf="password.errors?.['maxlength']">Hasło nie może być dłuższe niż 96 znaków.</div>
+                    </ng-container>
+                    <ng-template #regexBlock>
+                        <div *ngIf="password.errors?.['passwordStrengthCheck']">Hasło musi zawierać co najmniej jedną: wielką literę, małą literę, cyfrę oraz znak specjalny i nie może zawierać spacji.</div>
+                    </ng-template>
+                </div>
+            </ng-container>
 
             <div class="flex flex-col w-full items-center gap-y-1 z-10">
                 <label for="password-confirmation" class="font-titillium text-2xl text-white z-10">Potwierdzenie hasła</label>
-                <input class="rounded-full w-3/4 h-14 bg-color-2 text-xl text-white text-center z-10" id="password-confirmation" name="password-confirmation" type="password" [(ngModel)]="model.passwordConfirmation" #passwordConfirmation="ngModel">
+                <input class="rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="password-confirmation" name="password-confirmation" type="password" required [appPasswordConfirmation]="model.password" [(ngModel)]="model.passwordConfirmation" #passwordConfirmation="ngModel" (blur)="blur.passwordConfirmation = true" (focus)="blur.passwordConfirmation = false">
+            </div>
+
+            <div *ngIf="passwordConfirmation.dirty &&
+                        blur.passwordConfirmation &&
+                        passwordConfirmation.errors?.['passwordConfirmationDiffers']" class="text-sm text-red-800 font-titillium mb-3 text-center mx-4">
+                Hasło i potwierdzenie hasła się różnią.
             </div>
 
             <div class="text-gray-50 font-sans text-xs z-10">Masz konto? <a class="text-green-300 hover:underline hover:cursor-pointer z-10" routerLink="/login">Zaloguj się</a></div>
-            <button class="font-titillium text-2xl text-white w-full h-24 bg-gradient-to-b from-color-3 to-color-2 transition ease-in-out duration-100 hover:opacity-90 z-10">Zaloguj się</button>
+            <button class="font-titillium text-2xl text-white w-full h-24 bg-gradient-to-b from-color-3 to-color-2 transition ease-in-out duration-100 hover:opacity-90 z-10 disabled:opacity-20 disabled:cursor-not-allowed" [disabled]="!registerForm.form.valid">Załóż konto</button>
 
         </form>
     </div>

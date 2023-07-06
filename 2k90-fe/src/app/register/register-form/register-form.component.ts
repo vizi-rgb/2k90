@@ -20,4 +20,9 @@ export class RegisterFormComponent {
   }
 
   public error: boolean = false;
+
+  onSubmit() {
+    console.log(this.model.login);
+  }
+  
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { RegisterComponent } from './register/register/register.component';
 import { IndexComponent } from './index/index/index.component';
 import { CredentialsBackgroundComponent } from './shared/credentials-background/credentials-background.component';
 import { RegisterFormComponent } from './register/register-form/register-form.component';
+import { PasswordStrengthDirective } from './validator/password-strength.directive';
+import { PasswordConfirmationDirective } from './validator/password-confirmation.directive';
 
 @NgModule({
   declarations: [
@@ -22,11 +25,14 @@ import { RegisterFormComponent } from './register/register-form/register-form.co
     IndexComponent,
     CredentialsBackgroundComponent,
     RegisterFormComponent,
+    PasswordStrengthDirective,
+    PasswordConfirmationDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

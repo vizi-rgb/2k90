@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class LoginFormComponent {
 
+  public model = {
+    login: null,
+    password: null
+  }
+
+  onLoginChange(value: any) {
+    this.model.login = value;
+  }
 }

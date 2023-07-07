@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class LoginFormComponent {
 
+  public model = {
+    login: null,
+    password: null
+  }
+
 }

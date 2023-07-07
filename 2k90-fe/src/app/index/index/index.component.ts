@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import * as AOS from 'aos';
 
 interface Quote {
   quote: string;
@@ -23,6 +23,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.getKanyeSentence().subscribe((data: Quote) => this.quote = "\"".concat(data.quote, "\"") );
+    AOS.init();
   }
 
   onIndexLogoClick() {

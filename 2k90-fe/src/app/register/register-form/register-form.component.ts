@@ -21,6 +21,10 @@ export class RegisterFormComponent {
 
   public error: boolean = false;
 
+  onLoginChange(value: any) {
+    this.model.login = value;
+  }
+
   onSubmit() {
     console.log(this.model.login);
   }

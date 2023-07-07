@@ -12,4 +12,7 @@ export class LoginFormComponent {
     password: null
   }
 
+  onLoginChange(value: any) {
+    this.model.login = value;
+  }
 }

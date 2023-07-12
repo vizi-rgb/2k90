@@ -9,7 +9,7 @@
 
 ### Backend tech stack:
 - Spring Boot,
-- PostgreSQL,
+- MySQL,
 - Maven.
 
 Project planning is being done through Jira.

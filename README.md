@@ -11,5 +11,8 @@
 - Spring Boot,
 - MySQL,
 - Maven.
+- Lombok.
 
-Project planning is being done through Jira.
+### Additional
+- Jira,
+- Postman.

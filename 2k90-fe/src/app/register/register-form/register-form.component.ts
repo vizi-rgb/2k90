@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RegisterUser } from 'src/app/interfaces/register-user-interface';
 
 @Component({
   selector: 'app-register-form',
@@ -7,26 +9,34 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./register-form.component.css']
 })
 export class RegisterFormComponent {
+
+  private submitURL: string;
+
+  constructor(
+    private http: HttpClient
+  ) {
+    this.submitURL = "http://localhost:8080/api/auth/register";
+  }
+
   public model = {
-    login: null,
+    username: null,
+    email: null,
     password: null,
     passwordConfirmation: null
   }
 
-  public blur = {
-    login: false,
-    password: false,
-    passwordConfirmation: false
+  onUsernameChange(value: any) {
+    this.model.username = value;
   }
 
-  public error: boolean = false;
+  onRegisterSubmit() {
+    const userDTO: RegisterUser = {
+      username: this.model.username,
+      email: this.model.email,
+      password: this.model.password
+    };
 
-  onLoginChange(value: any) {
-    this.model.login = value;
-  }
-
-  onSubmit() {
-    console.log(this.model.login);
+    this.http.post<RegisterUser>(this.submitURL, userDTO).subscribe(d => console.log(d));
   }
   
 }

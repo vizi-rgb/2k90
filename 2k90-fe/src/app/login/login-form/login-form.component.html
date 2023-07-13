@@ -2,15 +2,15 @@
     <div class="h-[400px] sm:w-96 border z-10 w-72 mx-3">
         <form class="flex flex-col justify-between items-center w-full h-full z-10" #loginForm="ngForm">
             <div class="flex flex-col w-full items-center gap-y-1 mt-4 z-10">
-                <label for="login" class="font-titillium text-2xl text-white z-10">Login</label>
-                <input class="rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="login" name="login" type="text" minlength="4" maxlength="32" required [ngModel]="model.login | lowercase" (ngModelChange)="onLoginChange($event)" #login="ngModel">
+                <label for="username" class="font-titillium text-2xl text-white z-10">Nazwa użytkownika</label>
+                <input class="rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="username" name="username" type="text" minlength="4" maxlength="32" required [ngModel]="model.username | lowercase" (ngModelChange)="onUsernameChange($event)" #username="ngModel">
             </div>
 
-            <ng-container *ngIf="login.invalid && login.touched && login.dirty">
+            <ng-container *ngIf="username.invalid && username.touched && username.dirty">
                 <div class="text-sm text-red-800 font-titillium mb-3 text-center mx-4">
-                    <div *ngIf="login.errors?.['required']">Login jest wymagany.</div>
-                    <div *ngIf="login.errors?.['minlength']">Login musi zawierać co najmniej 4 znaki.</div>
-                    <div *ngIf="login.errors?.['maxlength']">Login nie może być dłuższy niż 32 znaki.</div>
+                    <div *ngIf="username.errors?.['required']">Nazwa użytkownika jest wymagana.</div>
+                    <div *ngIf="username.errors?.['minlength']">Nazwa użytkownika musi zawierać co najmniej 4 znaki.</div>
+                    <div *ngIf="username.errors?.['maxlength']">Nazwa użytkownika nie może być dłuższa niż 32 znaki.</div>
                 </div>
             </ng-container>
 
@@ -28,7 +28,7 @@
             </ng-container>
 
             <div class="text-gray-50 font-sans text-xs z-10">Nie masz konta? <a class="text-green-300 hover:underline hover:cursor-pointer z-10" routerLink="/register">Zarejestruj się</a></div>
-            <button class="font-titillium text-2xl text-white w-full h-24 bg-gradient-to-b from-color-3 to-color-2 transition ease-in-out duration-100 hover:opacity-90 z-10 disabled:opacity-20 disabled:cursor-not-allowed" [disabled]="!loginForm.form.valid">Zaloguj się</button>
+            <button (click)="onLoginClicked()" class="font-titillium text-2xl text-white w-full h-24 bg-gradient-to-b from-color-3 to-color-2 transition ease-in-out duration-100 hover:opacity-90 z-10 disabled:opacity-20 disabled:cursor-not-allowed" [disabled]="!loginForm.form.valid">Zaloguj się</button>
         </form>
     </div>
 </div>

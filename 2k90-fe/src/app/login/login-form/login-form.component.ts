@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,12 +8,31 @@ import { Component } from '@angular/core';
 })
 export class LoginFormComponent {
 
+  constructor(
+    private http: HttpClient
+  ) { }
+
   public model = {
-    login: null,
+    username: null,
     password: null
   }
 
-  onLoginChange(value: any) {
-    this.model.login = value;
+  onUsernameChange(value: any) {
+    this.model.username = value;
+  }
+
+  onLoginClicked() {
+    const url = "http://localhost:8080/testget";
+    const header: HttpHeaders = new HttpHeaders().set("Authorization", "Basic " + btoa("wiktor:vizi"));
+    //this.http.get<any>(url, {headers: header}).subscribe(d => console.log(d));
+
+    const url_login = "http://localhost:8080/login";
+    const body = {
+      username: "wiktor",
+      password: "vizi"
+    }
+
+    this.http.post<any>(url_login, body, {headers: header}).subscribe(d => console.log(d));
+    this.http.get(url_login, {responseType: 'text'}).subscribe(d => console.log(d));
   }
 }

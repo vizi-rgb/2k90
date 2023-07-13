@@ -6,10 +6,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
-    UserEntity findByLogin(String login);
+    Optional<UserEntity> findByUsername(String username);
+    Collection<UserEntity> findByEmail(String email);
 
     @Query(value = "SELECT * FROM users",
     nativeQuery = true)

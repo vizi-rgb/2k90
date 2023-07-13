@@ -1,7 +1,6 @@
 package com.vizirgb.backend2k90.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,8 +16,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "username")
-    private String login;
+    private String username;
 
     private String email;
 
@@ -30,11 +28,11 @@ public class UserEntity {
     private boolean enabled;
 
     public UserEntity(
-            String login,
+            String username,
             String email,
             String password
     ) {
-        this.login = login;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.role = "USER";

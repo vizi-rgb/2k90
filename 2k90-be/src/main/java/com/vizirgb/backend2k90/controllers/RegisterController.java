@@ -1,5 +1,6 @@
 package com.vizirgb.backend2k90.controllers;
 
+import com.vizirgb.backend2k90.dto.UserRegisterDTO;
 import com.vizirgb.backend2k90.entities.UserEntity;
 import com.vizirgb.backend2k90.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.vizirgb.backend2k90.dto.UserDTO;
 
 @RestController
 @RequestMapping("/api/auth/register")
@@ -23,15 +23,15 @@ public class RegisterController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping
-    public ResponseEntity<String> register(@RequestBody UserDTO user) {
+    public ResponseEntity<String> register(@RequestBody UserRegisterDTO user) {
         UserEntity userEntity = new UserEntity(
-                user.getLogin(),
+                user.getUsername(),
                 user.getEmail(),
                 passwordEncoder.encode(user.getPassword())
         );
 
         userRepository.save(userEntity);
-        return new ResponseEntity<>("Zarejestrowano", HttpStatus.CREATED);
+        return new ResponseEntity<>("Zarejestrowano", HttpStatus.OK);
     }
 
 }

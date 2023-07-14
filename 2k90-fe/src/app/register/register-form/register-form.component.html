@@ -36,7 +36,7 @@
 
             <div class="flex flex-col w-full items-center gap-y-1 z-10">
                 <label for="password" class="font-titillium text-2xl text-white z-10">Hasło</label>
-                <input class="rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="password" name="password" type="password" required minlength="8" maxlength="96" appPasswordStrength [(ngModel)]="model.password" #password="ngModel">
+                <input class="rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="password" name="password" type="password" required minlength="8" maxlength="60" appPasswordStrength [(ngModel)]="model.password" #password="ngModel">
             </div>
 
             <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
@@ -46,7 +46,7 @@
                                          password.errors?.['maxlength']; else regexBlock">
                         <div *ngIf="password.errors?.['required']">Hasło jest wymagane.</div>
                         <div *ngIf="password.errors?.['minlength']">Hasło musi zawierać co najmniej 8 znaków.</div>
-                        <div *ngIf="password.errors?.['maxlength']">Hasło nie może być dłuższe niż 96 znaków.</div>
+                        <div *ngIf="password.errors?.['maxlength']">Hasło nie może być dłuższe niż 60 znaków.</div>
                     </ng-container>
                     <ng-template #regexBlock>
                         <div *ngIf="password.errors?.['passwordStrengthCheck']">Hasło musi zawierać co najmniej jedną: wielką literę, małą literę, cyfrę oraz znak specjalny i nie może zawierać spacji.</div>

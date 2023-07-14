@@ -11,7 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+
     Optional<UserEntity> findByUsername(String username);
+
     Collection<UserEntity> findByEmail(String email);
 
     @Query(value = "SELECT * FROM users",

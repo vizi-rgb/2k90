@@ -9,15 +9,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "users", schema = "2k90-users-schema")
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String username;
+
     private String email;
+
     private String password;
+
     private String role;
 
     @Column(columnDefinition = "bool not null default true")
@@ -34,5 +38,4 @@ public class UserEntity {
         this.role = "USER";
         this.enabled = true;
     }
-
 }

@@ -19,19 +19,22 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final Optional<UserEntity> userEntityOptional = userRepository.findByUsername(username);
-        if (userEntityOptional.isEmpty()) {
+        Optional<UserEntity> userOptional = userRepository.findByUsername(username);
+
+        if (userOptional.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
 
-        UserEntity userEntity = userEntityOptional.get();
+        UserEntity user = userOptional.get();
 
-        UserDetails user = User
+        UserDetails userDetails = User
                 .builder()
-                .username(userEntity.getUsername())
-                .password(userEntity.getPassword())
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .roles(user.getRole())
+                .disabled(!user.isEnabled())
                 .build();
 
-        return user;
+        return userDetails;
     }
 }

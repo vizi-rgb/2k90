@@ -35,7 +35,7 @@ public class RegisterService {
             throw new ConstraintViolationException(violations);
         }
 
-        Optional<UserEntity> userOptional = userRepository.findByUsername(userRegisterDTO.getUsername());
+        Optional<UserEntity> userOptional = userRepository.findByUsername(userRegisterDTO.getUsername().toLowerCase());
 
         if (userOptional.isPresent()) {
             String msg = "Username is already registered in the database";
@@ -43,7 +43,7 @@ public class RegisterService {
         }
 
         UserEntity user = new UserEntity(
-                userRegisterDTO.getUsername(),
+                userRegisterDTO.getUsername().toLowerCase(),
                 userRegisterDTO.getEmail(),
                 passwordEncoder.encode(userRegisterDTO.getPassword())
         );

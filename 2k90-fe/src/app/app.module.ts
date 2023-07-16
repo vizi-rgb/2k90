@@ -14,6 +14,7 @@ import { CredentialsBackgroundComponent } from './shared/credentials-background/
 import { RegisterFormComponent } from './register/register-form/register-form.component';
 import { PasswordStrengthDirective } from './validator/password-strength.directive';
 import { PasswordConfirmationDirective } from './validator/password-confirmation.directive';
+import { RegisterSuccessComponent } from './register/register-success/register-success.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PasswordConfirmationDirective } from './validator/password-confirmation
     RegisterFormComponent,
     PasswordStrengthDirective,
     PasswordConfirmationDirective,
+    RegisterSuccessComponent,
   ],
   imports: [
     BrowserModule,

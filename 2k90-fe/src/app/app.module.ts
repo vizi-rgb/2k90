@@ -17,6 +17,7 @@ import { PasswordConfirmationDirective } from './validator/password-confirmation
 import { RegisterSuccessComponent } from './register/register-success/register-success.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

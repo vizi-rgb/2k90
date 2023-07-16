@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RegisterUserDTO } from 'src/app/interfaces/register-user-interface';
 
+
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',

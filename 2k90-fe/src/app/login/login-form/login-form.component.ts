@@ -8,9 +8,13 @@ import { Component } from '@angular/core';
 })
 export class LoginFormComponent {
 
+  private submitUrl: string;
+
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.submitUrl = "http://localhost:8080/api/auth/login";
+  }
 
   public model = {
     username: null,
@@ -22,17 +26,12 @@ export class LoginFormComponent {
   }
 
   onLoginClicked() {
-    const url = "http://localhost:8080/testget";
-    const header: HttpHeaders = new HttpHeaders().set("Authorization", "Basic " + btoa("wiktor:vizi"));
-    //this.http.get<any>(url, {headers: header}).subscribe(d => console.log(d));
-
-    const url_login = "http://localhost:8080/login";
-    const body = {
-      username: "wiktor",
-      password: "vizi"
-    }
-
-    this.http.post<any>(url_login, body, {headers: header}).subscribe(d => console.log(d));
-    this.http.get(url_login, {responseType: 'text'}).subscribe(d => console.log(d));
+    this.http.post(this.submitUrl, this.model, {responseType: 'text'}).subscribe(response => {
+      if (response == "Success") {
+        console.log("Zalogowano")
+      } else {
+        console.log("Nie udalo sie zalogowac");
+      }
+    })
   }
 }

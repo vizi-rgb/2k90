@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegisterUser } from 'src/app/interfaces/register-user-interface';
 
 @Component({
@@ -11,12 +12,9 @@ import { RegisterUser } from 'src/app/interfaces/register-user-interface';
 export class RegisterFormComponent {
 
   private submitURL: string;
-
-  constructor(
-    private http: HttpClient
-  ) {
-    this.submitURL = "http://localhost:8080/api/auth/register";
-  }
+  
+  public userAlreadyExistsError: boolean = false;
+  public dataInvalidError: boolean = false;
 
   public model = {
     username: null,
@@ -24,6 +22,15 @@ export class RegisterFormComponent {
     password: null,
     passwordConfirmation: null
   }
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private activeRoute: ActivatedRoute
+  ) {
+    this.submitURL = "http://localhost:8080/api/auth/register";
+  }
+
 
   onUsernameChange(value: any) {
     this.model.username = value;
@@ -33,10 +40,28 @@ export class RegisterFormComponent {
     const userDTO: RegisterUser = {
       username: this.model.username,
       email: this.model.email,
-      password: this.model.password
+      password: this.model.password,
+      passwordConfirmation: this.model.passwordConfirmation
     };
 
-    this.http.post<RegisterUser>(this.submitURL, userDTO).subscribe(d => console.log(d));
+    this.userAlreadyExistsError = false;
+    this.dataInvalidError = false;
+
+    this.http.post(this.submitURL, userDTO, {responseType: 'text'}).subscribe(data => {
+      if (data == "Success") {
+        this.router.navigate(
+          ['success'], {
+          relativeTo: this.activeRoute,
+          queryParams: {username: this.model.username}
+        });
+      } else if (data == "User already exists"){
+        this.userAlreadyExistsError = true;
+      } else if (data == "Data invalid") {
+        this.dataInvalidError = true;
+      }
+
+      console.log(data);
+    });
   }
   
 }

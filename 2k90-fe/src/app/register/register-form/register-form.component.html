@@ -1,8 +1,12 @@
 <div class="w-screen h-screen flex flex-col justify-center items-center z-10 absolute top-0 left-0">
 
 
-    <div *ngIf="false" class="text-xl text-red-800 font-titillium mb-3">
-        Hasło i potwierdzienie hasła się różnią.
+    <div *ngIf="userAlreadyExistsError" class="text-xl text-red-800 font-titillium mb-3">
+        Użytkownik o tej nazwie jest już zarejestrowany.
+    </div>
+
+    <div *ngIf="dataInvalidError" class="text-xl text-red-800 font-titillium mb-3">
+        Rejestracja nie powiodła się.
     </div>
     
 

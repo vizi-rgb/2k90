@@ -1,0 +1,13 @@
+<div class="bg-bg w-screen h-screen overflow-hidden"> 
+    <div class="flex flex-row justify-center absolute top-0 w-full">
+        <app-logo></app-logo>
+    </div>
+
+    <div class="flex flex-col justify-center w-full h-full gap-y-10">
+        <p class="font-titillium text-white text-xl mx-10 text-center">Pomyślnie zarejestrowano konto <span class="text-color-1">{{ username }}</span>.</p>
+        <p class="font-titillium text-white text-xl mx-10 text-center">Możesz się teraz zalogować.</p>
+        <div class="flex flex-row justify-center items-center gap-x-3">
+            <button class="w-24 h-12 bg-color-1 text-bg font-titillium rounded-3xl hover:opacity-50" routerLink="/login">Zaloguj się</button>
+        </div>
+    </div>
+</div>

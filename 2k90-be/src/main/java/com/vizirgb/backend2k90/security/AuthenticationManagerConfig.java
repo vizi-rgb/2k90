@@ -1,5 +1,6 @@
 package com.vizirgb.backend2k90.security;
 
+import com.vizirgb.backend2k90.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,9 @@ public class AuthenticationManagerConfig {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Bean
     public AuthenticationManager authenticationManager() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -29,7 +33,7 @@ public class AuthenticationManagerConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new CustomUserDetailsService();
+        return new CustomUserDetailsService(userRepository);
     }
 
 }

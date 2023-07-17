@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RegisterUser } from 'src/app/interfaces/register-user-interface';
+import { RegisterUserDTO } from 'src/app/interfaces/register-user-interface';
 
 @Component({
   selector: 'app-register-form',
@@ -37,7 +37,7 @@ export class RegisterFormComponent {
   }
 
   onRegisterSubmit() {
-    const userDTO: RegisterUser = {
+    const userDTO: RegisterUserDTO = {
       username: this.model.username,
       email: this.model.email,
       password: this.model.password,

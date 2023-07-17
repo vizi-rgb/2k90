@@ -4,18 +4,20 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-
-  constructor(
-    private http: HttpClient
-  ) { }
 
   public model = {
     username: null,
     password: null
   }
+
+  public show: boolean = false;
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   onUsernameChange(value: any) {
     this.model.username = value;

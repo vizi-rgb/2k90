@@ -15,6 +15,7 @@ export class RegisterFormComponent {
   
   public userAlreadyExistsError: boolean = false;
   public dataInvalidError: boolean = false;
+  public show: boolean = false;
 
   public model = {
     username: null,

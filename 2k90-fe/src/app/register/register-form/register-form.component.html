@@ -39,8 +39,12 @@
             </ng-container>
 
             <div class="flex flex-col w-full items-center gap-y-1 z-10">
-                <label for="password" class="font-titillium text-2xl text-white z-10">Hasło</label>
-                <input class="rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="password" name="password" type="password" required minlength="8" maxlength="60" appPasswordStrength [(ngModel)]="model.password" #password="ngModel">
+                <div class="flex flex-row justify-center items-center gap-x-2">
+                    <label for="password" class="font-titillium text-2xl text-white z-10">Hasło</label>
+                    <mat-icon class="text-color-3 text-right" (click)="show = !show">{{ show ? 'visibility' : 'visibility_off' }}</mat-icon>
+
+                </div>
+                <input class="rounded-full w-3/4 h-10 bg-color-2 text-xl text-white text-center z-10" id="password" name="password" [type]="show ? 'shown' : 'password'" required minlength="8" maxlength="60" appPasswordStrength [(ngModel)]="model.password" #password="ngModel">
             </div>
 
             <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">

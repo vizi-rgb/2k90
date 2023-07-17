@@ -15,6 +15,7 @@ import { RegisterFormComponent } from './register/register-form/register-form.co
 import { PasswordStrengthDirective } from './validator/password-strength.directive';
 import { PasswordConfirmationDirective } from './validator/password-confirmation.directive';
 import { RegisterSuccessComponent } from './register/register-success/register-success.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RegisterSuccessComponent } from './register/register-success/register-s
     PasswordStrengthDirective,
     PasswordConfirmationDirective,
     RegisterSuccessComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

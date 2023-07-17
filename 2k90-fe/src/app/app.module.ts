@@ -16,6 +16,8 @@ import { PasswordStrengthDirective } from './validator/password-strength.directi
 import { PasswordConfirmationDirective } from './validator/password-confirmation.directive';
 import { RegisterSuccessComponent } from './register/register-success/register-success.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

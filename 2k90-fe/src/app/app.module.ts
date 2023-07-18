@@ -18,6 +18,7 @@ import { RegisterSuccessComponent } from './register/register-success/register-s
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { AlbumTileComponent } from './shared/album-tile/album-tile.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatIconModule } from '@angular/material/icon';
     PasswordConfirmationDirective,
     RegisterSuccessComponent,
     PageNotFoundComponent,
+    AlbumTileComponent,
   ],
   imports: [
     BrowserModule,

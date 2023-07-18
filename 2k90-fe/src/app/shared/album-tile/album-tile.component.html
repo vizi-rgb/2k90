@@ -1,0 +1,20 @@
+<ng-container *ngIf="isSmallScreen; else elseBlock">
+    <div [style.width.px]="smSize" [style.height.px]="smSize">
+        <img [src]="fgPhotoUrl" class="w-full h-ful hover:opacity-90">
+    </div>
+</ng-container>
+
+
+<ng-template #elseBlock>
+    <div [style.width.px]="width" [style.height.px]="height" class="relative hover:opacity-90">
+        <div [ngStyle]="{ 'background-image': 'url(' + bgPhotoUrl + ')' }" class="w-full h-full absolute"></div>
+
+        <div [style.width.px]="height" [style.height.px]="height" class="flex justify-center items-center">
+            <img [src]="fgPhotoUrl" class="w-[85%] h-[85%] z-10">
+        </div>
+
+        <div [style.width.px]="width-height" [style.height.px]="height" class="absolute top-0 right-0 flex justify-center items-center overflow-hidden">
+            <p class="font-titillium text-base text-center bg-black text-white mx-2"> {{ caption }} </p>
+        </div>
+    </div>
+</ng-template>

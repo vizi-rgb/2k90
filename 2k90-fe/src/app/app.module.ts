@@ -19,6 +19,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { AlbumTileComponent } from './shared/album-tile/album-tile.component';
+import { MainViewComponent } from './main-view/main-view/main-view.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { AlbumTileComponent } from './shared/album-tile/album-tile.component';
     RegisterSuccessComponent,
     PageNotFoundComponent,
     AlbumTileComponent,
+    MainViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,8 @@ import { AlbumTileComponent } from './shared/album-tile/album-tile.component';
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatTabsModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

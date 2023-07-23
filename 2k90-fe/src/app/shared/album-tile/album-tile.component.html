@@ -7,14 +7,14 @@
 
 <ng-template #elseBlock>
     <div [style.width.px]="width" [style.height.px]="height" class="relative transition-transform duration-200 ease-in-out hover:scale-110">
-        <div [ngStyle]="{ 'background-image': 'url(' + bgPhotoUrl + ')' }" class="w-full h-full absolute"></div>
+        <div [ngStyle]="{ 'background-image': 'url(' + bgPhotoUrl + ')' }" class="w-full h-full absolute bg-cover"></div>
 
         <div [style.width.px]="height" [style.height.px]="height" class="flex justify-center items-center">
             <img [src]="fgPhotoUrl" class="w-[85%] h-[85%] z-10">
         </div>
 
         <div [style.width.px]="width-height" [style.height.px]="height" class="absolute top-0 right-0 flex justify-center items-center overflow-hidden">
-            <p class="font-titillium text-base text-center bg-black text-white mx-2"> {{ caption }} </p>
+            <p class="font-titillium text-base text-center bg-black text-white mx-2 p-1"> {{ caption }} </p>
         </div>
     </div>
 </ng-template>

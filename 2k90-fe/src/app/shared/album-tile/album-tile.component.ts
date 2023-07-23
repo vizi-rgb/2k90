@@ -28,6 +28,11 @@ export class AlbumTileComponent implements OnInit {
 
   public isSmallScreen: boolean;
 
+  public static readonly BREAKPOINTS = [
+    Breakpoints.XSmall,
+    Breakpoints.Small
+  ];
+
   constructor(
     private breakpointObserver: BreakpointObserver
   ) {
@@ -35,12 +40,12 @@ export class AlbumTileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isSmallScreen = this.breakpointObserver.isMatched(Breakpoints.XSmall);
+    this.isSmallScreen = this.breakpointObserver.isMatched(AlbumTileComponent.BREAKPOINTS);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isSmallScreen = this.breakpointObserver.isMatched(Breakpoints.XSmall);
+    this.isSmallScreen = this.breakpointObserver.isMatched(AlbumTileComponent.BREAKPOINTS);
   }
 
 }

@@ -32,20 +32,20 @@
     <div class="flex justify-center">
         <mat-tab-group class="mt-[10vh] mx-4 w-11/12">
             <mat-tab label="wszystkie" class="w-full">
-                <div class="grid grid-cols-3 gap-4 sm:gap-y-6 w-full justify-items-center mt-5">
-                        <app-album-tile></app-album-tile>
+                <div class="grid grid-cols-3 gap-4 sm:gap-y-6 w-full justify-items-center mt-5 overflow-x-hidden">
+                        <app-album-tile [width]="tileWidth"></app-album-tile>
 
-                        <app-album-tile fgPhotoUrl="assets/good-kid.png"></app-album-tile>
+                        <app-album-tile [width]="tileWidth" fgPhotoUrl="assets/good-kid.png"></app-album-tile>
 
-                        <app-album-tile fgPhotoUrl="assets/views.png"></app-album-tile>
+                        <app-album-tile [width]="tileWidth" fgPhotoUrl="assets/views.png"></app-album-tile>
 
-                        <app-album-tile></app-album-tile>
+                        <app-album-tile [width]="tileWidth" caption="Good kiddo bad kiddo my friend"></app-album-tile>
 
-                        <app-album-tile fgPhotoUrl="assets/good-kid.png"></app-album-tile>
+                        <app-album-tile [width]="tileWidth" fgPhotoUrl="assets/good-kid.png"></app-album-tile>
 
-                        <app-album-tile fgPhotoUrl="assets/views.png"></app-album-tile>
+                        <app-album-tile [width]="tileWidth" fgPhotoUrl="assets/views.png"></app-album-tile>
 
-                        <app-album-tile></app-album-tile>
+                        <app-album-tile [width]="tileWidth"></app-album-tile>
                 </div> 
             </mat-tab>
 

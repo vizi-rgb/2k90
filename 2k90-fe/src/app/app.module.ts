@@ -22,6 +22,8 @@ import { AlbumTileComponent } from './shared/album-tile/album-tile.component';
 import { MainViewComponent } from './main-view/main-view/main-view.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { DepositComponent } from './deposit/deposit/deposit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { MatMenuModule } from '@angular/material/menu';
     PageNotFoundComponent,
     AlbumTileComponent,
     MainViewComponent,
+    DepositComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatTabsModule,
     MatMenuModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

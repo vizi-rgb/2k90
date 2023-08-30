@@ -6,7 +6,7 @@
 
    <div class="flex flex-col justify-center items-center gap-y-5 absolute top-0 w-screen h-screen">
       <div class="w-96 h-96 bg-color-2 rounded-2xl grid-cols-2 grid-rows-3 grid items-center p-5 gap-x-5">
-         <p class="col-span-2 text-white font-titillium text-center text-2xl"> Wybrana kwota: {{ money ?  money + " zł" : ""}}</p>
+         <p class="col-span-2 text-white font-titillium text-center text-2xl"> Wybrana kwota: <span class="text-color-1">{{ money ?  money + " zł" : ""}}</span></p>
 
          <button mat-fab extended color="primary" (click)="money=sum" *ngFor="let sum of sums">
             <mat-icon>
@@ -16,7 +16,7 @@
          </button>
 
       </div>
-      <button mat-flat-button color="accent">Wpłać</button>
+      <button mat-flat-button color="accent">Potwierdź</button>
    </div>   
 
 

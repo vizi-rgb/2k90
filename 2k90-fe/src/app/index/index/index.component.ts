@@ -25,11 +25,7 @@ export class IndexComponent implements OnInit {
   }
 
   onIndexLogoClick() {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+    document.getElementById("background")?.scroll({top: 0, left: 0, behavior: 'smooth'});
   }
 
   getKanyeSentence(): Observable<Quote> {

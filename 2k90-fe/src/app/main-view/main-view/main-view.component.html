@@ -1,9 +1,16 @@
 <div class="bg-bg min-h-screen">
     <div class="flex flex-row justify-around items-center w-screen">
-        <app-logo class="relative"></app-logo>
-        <button class="absolute right-[10vw]" mat-icon-button [matMenuTriggerFor]="menu">
+        <button class="invisible" mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon class="text-white">more_horiz</mat-icon>
         </button>
+        
+        <app-logo></app-logo>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="text-white">more_horiz</mat-icon>
+        </button>
+
+
     </div>
 
     <div class="flex flex-row justify-center items-center mt-[10vh] w-full">

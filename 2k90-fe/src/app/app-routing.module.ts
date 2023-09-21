@@ -8,14 +8,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MainViewComponent } from './main-view/main-view/main-view.component';
 import { AlbumTileComponent } from './shared/album-tile/album-tile.component';
 import { DepositComponent } from './deposit/deposit/deposit.component';
+import { landingPageGuard, notLoggedInGuard } from './auth-guards.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'register/success', component: RegisterSuccessComponent },
-  { path: "deposit", component: DepositComponent },
-  { path: 'main-view', component: MainViewComponent }, 
-  { path: '', component: IndexComponent }, 
+  { path: 'deposit', component: DepositComponent, canActivate: [notLoggedInGuard] },
+  { path: 'home', component: MainViewComponent, canActivate: [notLoggedInGuard] }, 
+  { path: '', component: IndexComponent, canActivate: [landingPageGuard] }, 
   { path: '**', component: PageNotFoundComponent },
 ];
 

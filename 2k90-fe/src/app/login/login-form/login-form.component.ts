@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -26,5 +26,10 @@ export class LoginFormComponent {
   onLoginClicked() {
     const url_login = "http://localhost:8080/api/auth/login";
 
-    this.http.post(url_login, this.model, {responseType: 'text'}).subscribe(d => console.log(d)); }
+    this.http.post(url_login, this.model, {responseType: 'text'}).subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.log('dupa'),
+      complete: () => console.log('complete')
+    });
+  }
 }

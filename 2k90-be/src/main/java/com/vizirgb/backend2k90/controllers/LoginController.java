@@ -25,13 +25,15 @@ public class LoginController {
     @PostMapping
     public ResponseEntity<String> login(@RequestBody UserLoginDTO userLoginDTO) {
        String responseMsg = "Success";
+       HttpStatus code = HttpStatus.OK;
 
        try {
            loginService.login(userLoginDTO);
        } catch (AuthenticationException e) {
            responseMsg = "Failure";
+           code = HttpStatus.UNAUTHORIZED;
        }
 
-       return new ResponseEntity<String>(responseMsg, HttpStatus.OK);
+       return new ResponseEntity<String>(responseMsg, code);
     }
 }

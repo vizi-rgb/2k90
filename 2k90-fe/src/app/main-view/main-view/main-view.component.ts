@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AlbumTileComponent } from 'src/app/shared/album-tile/album-tile.component';
 
 @Component({
@@ -9,22 +10,31 @@ import { AlbumTileComponent } from 'src/app/shared/album-tile/album-tile.compone
 })
 export class MainViewComponent implements OnInit {
   public userInfo = {
-    username: "user",
+    username: "",
     url: "assets/user-default.jpg"
   };
 
   public tileWidth: number;
 
   constructor(
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private authenticationService: AuthenticationService
   ) {
     this.tileWidth = 300;
+    console.log({
+      'authenticated': this.authenticationService.isAuthenticated,
+      'value': this.authenticationService.userValue,
+      'userInfo': this.userInfo
+    });
   }
 
   ngOnInit(): void {
     if (!this.isSmallScreen()) {
       this.tileWidth = this.calculateWidth();
     }
+
+    this.userInfo.username = this.authenticationService.userValue!.username;
+    console.log(this.authenticationService.userValue?.email);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -45,5 +55,9 @@ export class MainViewComponent implements OnInit {
 
   private isSmallScreen(): boolean {
     return this.breakpointObserver.isMatched(AlbumTileComponent.BREAKPOINTS);
+  }
+
+  public logout(): void {
+    this.authenticationService.doLogout();
   }
 }

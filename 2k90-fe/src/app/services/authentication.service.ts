@@ -47,7 +47,7 @@ export class AuthenticationService {
           this.authenticated = true;
           const base64UsernamePassword: string = btoa(userDTO.username + ':' + userDTO.password);
           this.basicAuthorization = new HttpHeaders({'Authorization:': 'Basic' + base64UsernamePassword});
-          localStorage.setItem('user', JSON.stringify(v));
+          localStorage.setItem('user', v);
           const vJson = JSON.parse(v);
           this.userSubject.next({
             id: vJson.id,
@@ -67,6 +67,8 @@ export class AuthenticationService {
   doLogout() {
     localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/login']);
+    this.authenticated = false;
+    this.basicAuthorization = undefined;
+    this.router.navigate(['login']);
   }
 }

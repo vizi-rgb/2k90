@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -18,7 +19,9 @@ export class LoginFormComponent {
 
   constructor(
     private http: HttpClient,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
+
   ) { }
 
   onUsernameChange(value: any) {
@@ -30,5 +33,7 @@ export class LoginFormComponent {
         username: this.model.username!,
         password: this.model.password!
       });
+
+      this.router.navigate(['home']);
   }
 }

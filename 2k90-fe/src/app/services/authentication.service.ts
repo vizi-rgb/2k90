@@ -60,7 +60,7 @@ export class AuthenticationService {
             throw new Error("Wrong credentials");
         },
 
-        complete: () => console.log('complete')
+        complete: () => this.router.navigate(['home'])
       });
   }
 

@@ -33,7 +33,5 @@ export class LoginFormComponent {
         username: this.model.username!,
         password: this.model.password!
       });
-
-      this.router.navigate(['home']);
   }
 }

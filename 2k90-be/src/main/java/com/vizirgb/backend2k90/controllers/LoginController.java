@@ -7,6 +7,7 @@ import com.vizirgb.backend2k90.repositories.UserRepository;
 import com.vizirgb.backend2k90.security.AuthenticationManagerConfig;
 import com.vizirgb.backend2k90.security.CustomUserDetailsService;
 import com.vizirgb.backend2k90.services.LoginService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,17 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/auth/login")
 public class LoginController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private LoginService loginService;
-
-    @Autowired
-    private UserRepository userRepository;
+    private final AuthenticationManager authenticationManager;
+    private final LoginService loginService;
+    private final UserRepository userRepository;
 
     @PostMapping
     public ResponseEntity<UserDTO> login(@RequestBody UserLoginDTO userLoginDTO) {
@@ -43,13 +40,7 @@ public class LoginController {
            return new ResponseEntity<>(null, code);
        }
 
-       Optional<UserEntity> user = userRepository.findByUsername(userLoginDTO.getUsername());
-       UserDTO userDTO = user.map(userEntity ->
-               new UserDTO(
-                   userEntity.getId(),
-                   userEntity.getUsername(),
-                   userEntity.getEmail()
-       )).orElse(null);
+       UserDTO userDTO = loginService.onSuccessfulLogin(userLoginDTO);
 
        return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }

@@ -52,7 +52,8 @@ export class AuthenticationService {
           this.userSubject.next({
             id: vJson.id,
             username: vJson.username,
-            email: vJson.email
+            email: vJson.email,
+            role: vJson.role
           });
         },
 

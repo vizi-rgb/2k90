@@ -11,6 +11,7 @@ import { AlbumTileComponent } from 'src/app/shared/album-tile/album-tile.compone
 export class MainViewComponent implements OnInit {
   public userInfo = {
     username: "",
+    role: "",
     url: "assets/user-default.jpg"
   };
 
@@ -34,6 +35,7 @@ export class MainViewComponent implements OnInit {
     }
 
     this.userInfo.username = this.authenticationService.userValue!.username;
+    this.userInfo.role = this.authenticationService.userValue!.role;
     console.log(this.authenticationService.userValue?.email);
   }
 

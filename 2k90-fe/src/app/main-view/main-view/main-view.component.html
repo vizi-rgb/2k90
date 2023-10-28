@@ -1,72 +1,85 @@
 <div class="bg-bg min-h-screen">
-    <div class="flex flex-row justify-around items-center w-screen">
-        <button class="invisible" mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon class="text-white">more_horiz</mat-icon>
-        </button>
+  <div class="flex flex-row justify-around items-center w-screen">
+    <button class="invisible" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="text-white">more_horiz</mat-icon>
+    </button>
 
-        <app-logo></app-logo>
+    <app-logo></app-logo>
 
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon class="text-white">more_horiz</mat-icon>
-        </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="text-white">more_horiz</mat-icon>
+    </button>
+  </div>
 
-
+  <div class="flex flex-row justify-center items-center mt-[10vh] w-full">
+    <div class="flex flex-col justify-normal">
+      <div class="bg-white w-32 h-32 rounded-full overflow-hidden">
+        <img [src]="userInfo.url" />
+      </div>
+      <p class="text-white text-center text-2xl">{{ userInfo.username }}</p>
     </div>
+  </div>
 
-    <div class="flex flex-row justify-center items-center mt-[10vh] w-full">
-        <div class="flex flex-col justify-normal">
-            <div class="bg-white w-32 h-32 rounded-full overflow-hidden">
-                <img [src]="userInfo.url">
-            </div>
-            <p class="text-white text-center text-2xl">{{ userInfo.username }}</p>
+  <!-- Menu under 3 horizontal dots -->
+  <mat-menu #menu="matMenu" class="bg-color-2">
+    <button mat-menu-item>
+      <mat-icon>account_circle</mat-icon>
+      <span class="font-titillium">Profil</span>
+    </button>
+
+    <ng-container *ngIf="userInfo.role === 'ADMIN'">
+      <button routerLink="/dashboard" mat-menu-item>
+        <mat-icon>space_dashboard</mat-icon>
+        <span class="font-titillium">Panel administracyjny</span>
+      </button>
+    </ng-container>
+
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span class="font-titillium">Wyloguj się</span>
+    </button>
+  </mat-menu>
+
+  <div class="flex justify-center">
+    <mat-tab-group class="mt-[10vh] mx-4 w-11/12">
+      <mat-tab label="wszystkie" class="w-full">
+        <div
+          class="grid grid-cols-3 gap-4 sm:gap-y-6 w-full justify-items-center mt-5 overflow-x-hidden"
+        >
+          <app-album-tile [width]="tileWidth"></app-album-tile>
+
+          <app-album-tile
+            [width]="tileWidth"
+            fgPhotoUrl="assets/good-kid.png"
+          ></app-album-tile>
+
+          <app-album-tile
+            [width]="tileWidth"
+            fgPhotoUrl="assets/views.png"
+          ></app-album-tile>
+
+          <app-album-tile
+            [width]="tileWidth"
+            caption="Good kiddo bad kiddo my friend"
+          ></app-album-tile>
+
+          <app-album-tile
+            [width]="tileWidth"
+            fgPhotoUrl="assets/good-kid.png"
+          ></app-album-tile>
+
+          <app-album-tile
+            [width]="tileWidth"
+            fgPhotoUrl="assets/views.png"
+          ></app-album-tile>
+
+          <app-album-tile [width]="tileWidth"></app-album-tile>
         </div>
-    </div>
+      </mat-tab>
 
-    <!-- Menu under 3 horizontal dots -->
-    <mat-menu #menu="matMenu" class="bg-color-2">
-        <button mat-menu-item>
-            <mat-icon>account_circle</mat-icon>
-            <span class="font-titillium">Profil</span>
-        </button>
+      <mat-tab label="nowe"></mat-tab>
 
-        <ng-container *ngIf="userInfo.role === 'ADMIN'">
-          <button mat-menu-item>
-            <mat-icon>space_dashboard</mat-icon>
-            <span class="font-titillium">Panel administracyjny</span>
-          </button>
-
-        </ng-container>
-
-        <button mat-menu-item (click)="logout();">
-            <mat-icon>logout</mat-icon>
-            <span class="font-titillium">Wyloguj się</span>
-        </button>
-    </mat-menu>
-
-
-    <div class="flex justify-center">
-        <mat-tab-group class="mt-[10vh] mx-4 w-11/12">
-            <mat-tab label="wszystkie" class="w-full">
-                <div class="grid grid-cols-3 gap-4 sm:gap-y-6 w-full justify-items-center mt-5 overflow-x-hidden">
-                        <app-album-tile [width]="tileWidth"></app-album-tile>
-
-                        <app-album-tile [width]="tileWidth" fgPhotoUrl="assets/good-kid.png"></app-album-tile>
-
-                        <app-album-tile [width]="tileWidth" fgPhotoUrl="assets/views.png"></app-album-tile>
-
-                        <app-album-tile [width]="tileWidth" caption="Good kiddo bad kiddo my friend"></app-album-tile>
-
-                        <app-album-tile [width]="tileWidth" fgPhotoUrl="assets/good-kid.png"></app-album-tile>
-
-                        <app-album-tile [width]="tileWidth" fgPhotoUrl="assets/views.png"></app-album-tile>
-
-                        <app-album-tile [width]="tileWidth"></app-album-tile>
-                </div>
-            </mat-tab>
-
-            <mat-tab label="nowe"></mat-tab>
-
-            <mat-tab label="ocenione"></mat-tab>
-        </mat-tab-group>
-    </div>
+      <mat-tab label="ocenione"></mat-tab>
+    </mat-tab-group>
+  </div>
 </div>

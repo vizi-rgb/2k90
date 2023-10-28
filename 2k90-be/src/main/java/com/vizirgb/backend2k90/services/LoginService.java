@@ -1,7 +1,7 @@
 package com.vizirgb.backend2k90.services;
 
-import com.vizirgb.backend2k90.dto.UserDTO;
-import com.vizirgb.backend2k90.dto.UserLoginDTO;
+import com.vizirgb.backend2k90.services.dto.UserDTO;
+import com.vizirgb.backend2k90.services.dto.UserLoginDTO;
 import com.vizirgb.backend2k90.entities.UserEntity;
 import com.vizirgb.backend2k90.repositories.UserRepository;
 import jakarta.validation.constraints.NotNull;

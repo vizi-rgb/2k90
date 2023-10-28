@@ -1,6 +1,6 @@
 package com.vizirgb.backend2k90.services;
 
-import com.vizirgb.backend2k90.dto.UserRegisterDTO;
+import com.vizirgb.backend2k90.services.dto.UserRegisterDTO;
 import com.vizirgb.backend2k90.entities.UserEntity;
 import com.vizirgb.backend2k90.exceptions.UserAlreadyExistsException;
 import com.vizirgb.backend2k90.repositories.UserRepository;

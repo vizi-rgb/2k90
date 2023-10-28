@@ -24,7 +24,7 @@ public class WebSecurityConfig {
                 .csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((requests) -> {
                     requests
-                            .requestMatchers("/api/auth/**", "/testget")
+                            .requestMatchers("/api/auth/**", "/api/songs/**")
                             .permitAll()
                             .anyRequest()
                             .authenticated();

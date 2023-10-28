@@ -1,4 +1,4 @@
-package com.vizirgb.backend2k90.dto;
+package com.vizirgb.backend2k90.services.dto;
 
 
 import jakarta.validation.constraints.Email;

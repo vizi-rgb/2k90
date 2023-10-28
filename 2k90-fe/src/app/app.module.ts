@@ -24,6 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { DepositComponent } from './deposit/deposit/deposit.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DepositComponent } from './deposit/deposit/deposit.component';
     AlbumTileComponent,
     MainViewComponent,
     DepositComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,

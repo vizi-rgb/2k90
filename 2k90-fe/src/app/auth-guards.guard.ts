@@ -1,5 +1,10 @@
 import { inject } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, CanActivateFn, ROUTER_CONFIGURATION, Router, RouterStateSnapshot, createUrlTreeFromSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivateFn,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 
 export const notLoggedInGuard: CanActivateFn = (
@@ -10,7 +15,7 @@ export const notLoggedInGuard: CanActivateFn = (
   console.log(isAnonymous);
 
   if (isAnonymous) {
-    return inject(Router).createUrlTree(["/", "login"]);
+    return inject(Router).createUrlTree(['/', 'login']);
   }
 
   return true;
@@ -18,11 +23,20 @@ export const notLoggedInGuard: CanActivateFn = (
 
 export const landingPageGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
+  state: RouterStateSnapshot,
 ) => {
   const isAnonymous: boolean = !inject(AuthenticationService).isAuthenticated;
 
-  return isAnonymous ?
-    true :
-    inject(Router).createUrlTree(["/", "home"]);
+  return isAnonymous ? true : inject(Router).createUrlTree(['/', 'home']);
+};
+
+export const adminGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+) => {
+  const userRole: string | undefined = inject(AuthenticationService).userValue
+    ?.role;
+  const isAdmin: boolean = userRole != undefined && userRole === 'ADMIN';
+
+  return isAdmin;
 };

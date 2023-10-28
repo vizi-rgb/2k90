@@ -23,6 +23,8 @@ import { MainViewComponent } from './main-view/main-view/main-view.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { DepositComponent } from './deposit/deposit/deposit.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
@@ -55,8 +57,10 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     MatTabsModule,
     MatMenuModule,
     MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

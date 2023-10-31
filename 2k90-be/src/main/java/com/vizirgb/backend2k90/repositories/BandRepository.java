@@ -1,14 +1,13 @@
 package com.vizirgb.backend2k90.repositories;
 
-import com.vizirgb.backend2k90.entities.AlbumEntity;
-import com.vizirgb.backend2k90.entities.BandEntity;
+import com.vizirgb.backend2k90.entities.Band;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
 @Repository
-public interface BandRepository extends CrudRepository<BandEntity, Long> {
+public interface BandRepository extends CrudRepository<Band, Long> {
 
-    Collection<BandEntity> findAllByName(String name);
+    Collection<Band> findAllByName(String name);
 }

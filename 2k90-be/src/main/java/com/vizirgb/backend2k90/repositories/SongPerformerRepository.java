@@ -1,14 +1,13 @@
 package com.vizirgb.backend2k90.repositories;
 
-import com.vizirgb.backend2k90.entities.AlbumEntity;
-import com.vizirgb.backend2k90.entities.SongPerformerEntity;
+import com.vizirgb.backend2k90.entities.SongPerformer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
 @Repository
-public interface SongPerformerRepository extends CrudRepository<SongPerformerEntity, Long> {
+public interface SongPerformerRepository extends CrudRepository<SongPerformer, Long> {
 
-    Collection<SongPerformerEntity> findAllBySongId(long songId);
+    Collection<SongPerformer> findAllBySongId(long songId);
 }

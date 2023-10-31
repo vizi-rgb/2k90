@@ -9,12 +9,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "Band")
-public class BandEntity {
+@Table(name = "SongPerformer")
+public class SongPerformer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
+    private boolean isMainArtist;
+
+    private long songId;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "artistId")
+    private Artist artist;
 }

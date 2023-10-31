@@ -9,14 +9,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "BandMembership")
-public class BandMembershipEntity {
+@Table(name = "Band")
+public class Band {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long bandId;
-
-    private long artistId;
+    private String name;
 }

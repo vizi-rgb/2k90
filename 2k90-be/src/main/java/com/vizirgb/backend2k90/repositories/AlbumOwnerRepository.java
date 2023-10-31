@@ -1,18 +1,17 @@
 package com.vizirgb.backend2k90.repositories;
 
-import com.vizirgb.backend2k90.entities.AlbumEntity;
-import com.vizirgb.backend2k90.entities.AlbumOwnerEntity;
+import com.vizirgb.backend2k90.entities.AlbumOwner;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
 @Repository
-public interface AlbumOwnerRepository extends CrudRepository<AlbumOwnerEntity, Long> {
+public interface AlbumOwnerRepository extends CrudRepository<AlbumOwner, Long> {
 
-    Collection<AlbumOwnerEntity> findAllByAlbumId(long albumId);
+    Collection<AlbumOwner> findAllByAlbumId(long albumId);
 
-    Collection<AlbumOwnerEntity> findAllByArtistId(long artistId);
+    Collection<AlbumOwner> findAllByArtistId(long artistId);
 
-    Collection<AlbumOwnerEntity> findAllByBandId(long bandId);
+    Collection<AlbumOwner> findAllByBandId(long bandId);
 }

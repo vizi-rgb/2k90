@@ -5,12 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @Table(name = "Song")
-public class SongEntity {
+public class Song {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +22,11 @@ public class SongEntity {
 
     private String title;
 
-    private long albumId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "albumId")
+    private Album album;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "songId")
+    private List<SongPerformer> songPerformerList;
 }
